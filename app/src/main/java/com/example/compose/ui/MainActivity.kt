@@ -1,4 +1,4 @@
-package com.example.compose
+package com.example.compose.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.compose.R
 import com.example.compose.ui.theme.ComposeTheme
 
 class MainActivity : ComponentActivity() {

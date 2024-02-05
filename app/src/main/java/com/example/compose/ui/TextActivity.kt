@@ -1,4 +1,4 @@
-package com.example.compose
+package com.example.compose.ui
 
 import android.content.Context
 import android.content.Intent
@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import com.example.compose.R
 import com.example.compose.ui.theme.ComposeTheme
 
 /**

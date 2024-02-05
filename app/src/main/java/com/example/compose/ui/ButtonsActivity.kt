@@ -1,4 +1,4 @@
-package com.example.compose
+package com.example.compose.ui
 
 import android.content.Context
 import android.content.Intent
