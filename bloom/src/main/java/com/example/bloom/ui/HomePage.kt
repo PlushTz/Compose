@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -88,22 +89,25 @@ val navList = listOf(
 @Composable
 fun HomePage() {
     Scaffold(
+        modifier = Modifier.wrapContentSize(),
         bottomBar = {
             BottomBar()
+        },
+        content = {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(white)
+                    .padding(horizontal = 16.dp)
+                    .padding(it)
+            ) {
+                Spacer(modifier = Modifier.height(40.dp))
+                SearchBar()
+                BloomRowBanner()
+                BloomInfoList()
+            }
         }
-    ) {
-        Column(
-            Modifier
-                .fillMaxSize()
-                .background(white)
-                .padding(horizontal = 16.dp)
-        ) {
-            Spacer(modifier = Modifier.height(40.dp))
-            SearchBar()
-            BloomRowBanner()
-            BloomInfoList()
-        }
-    }
+    )
 }
 
 @Preview(showBackground = true)
