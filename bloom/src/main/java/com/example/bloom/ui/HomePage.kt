@@ -33,6 +33,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -60,7 +62,8 @@ import com.example.bloom.ui.theme.white
  * Email: lijt@eetrust.com
  */
 
-data class ImageItem(val name: String, val resId: Int, var enable: Boolean = false)
+
+data class ImageItem(val name: String, val resId: Int, var enable: MutableState<Boolean> = mutableStateOf(false))
 
 val bloomBannerList = listOf(
     ImageItem("Desert chic", R.drawable.desert_chic),
@@ -302,9 +305,9 @@ fun DesignCard(plant: ImageItem) {
                     modifier = Modifier
                         .padding(top = 24.dp)
                         .size(24.dp),
-                    checked = plant.enable,
+                    checked = plant.enable.value,
                     onCheckedChange = {
-                        plant.enable = it
+                        plant.enable.value = it
                     },
                     colors = CheckboxDefaults.colors(
                         checkmarkColor = white

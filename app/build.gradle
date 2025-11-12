@@ -37,7 +37,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.3'
+        kotlinCompilerExtensionVersion '1.5.2'
     }
     packaging {
         resources {
@@ -55,6 +55,7 @@ dependencies {
     implementation libs.androidx.compose.ui.graphics
     implementation libs.androidx.compose.ui.tooling.preview
     implementation libs.androidx.compose.material3
+    implementation libs.androidx.compose.runtime.livedata
     testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext.junit
     androidTestImplementation libs.androidx.test.espresso.core
