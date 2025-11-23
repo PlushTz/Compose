@@ -3,7 +3,7 @@ agp = "8.1.4"
 kotlin = "1.9.0"
 coreKtx = "1.10.0"
 lifecycleRuntimeKtx = "2.5.0"
-activityCompose = "1.7.0"
+activityCompose = "1.8.0"
 composeBom = "2023.03.00"
 composeUi = "1.4.0"
 composeUiGraphics = "1.4.0"
@@ -18,6 +18,8 @@ runtimeLivedata = "1.4.0"
 junit = "4.13.2"
 junitExt = "1.1.5"
 espressoCore = "3.5.1"
+coil3Compose = "3.0.0"
+
 
 
 [libraries]
@@ -37,6 +39,8 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+io-coil-kt-coil3 = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil3Compose" }
+io-coil-kt-coil3-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil3Compose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 

@@ -28,7 +28,7 @@ import com.example.compose.viewmodel.TestViewModel
  * Created on 2024/2/4
  * Email: lijt@eetrust.com
  */
-class Welcome : ComponentActivity() {
+class StateActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
