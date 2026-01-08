@@ -3,6 +3,7 @@ package com.example.compose.ui.main
 import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
@@ -51,11 +52,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         // This enables edge-to-edge display. The system bars will become transparent
         // and your content can be drawn behind them.
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(
+                lightScrim = android.graphics.Color.TRANSPARENT,
+                darkScrim = android.graphics.Color.TRANSPARENT
+            ),
+            navigationBarStyle = SystemBarStyle.auto(
+                lightScrim = android.graphics.Color.TRANSPARENT,
+                darkScrim = android.graphics.Color.TRANSPARENT
+            )
+        )
         setContent {
             ComposeTheme {
-                // We delegate the system bar icon color handling to our main screen.
-                TransparentStatusBarExample()
+                AppContent()
             }
         }
     }
@@ -64,22 +73,10 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun TransparentStatusBarExample() {
+fun AppContent() {
     val navController = rememberNavController()
-
-    // Control the system UI (status bar icons) color.
-    val useDarkIcons = !isSystemInDarkTheme()
-    val view = LocalView.current
-    SideEffect {
-        val window = (view.context as Activity).window
-        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = useDarkIcons
-    }
-
-    // Scaffold is a great layout composable for edge-to-edge.
-    // It provides padding values that account for system bars.
     Scaffold(
-        // The containerColor will be the color shown behind the transparent status bar.
-        containerColor = MaterialTheme.colorScheme.primaryContainer
+        modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         NavHost(navController, AppRoute.ROUTE_HOME_PAGE) {
             composable(AppRoute.ROUTE_HORIZONTAL_PAGE) {
@@ -130,9 +127,12 @@ fun ColumnsLayout(modifier: Modifier, navController: NavController) {
                 .fillMaxWidth()
                 .padding(start = 10.dp, end = 10.dp),
             shape = RoundedCornerShape(5.dp),
-            onClick = {}, colors = ButtonDefaults.buttonColors(containerColor = Blue01),
+            onClick = {
+
+            },
+            colors = ButtonDefaults.buttonColors(containerColor = Blue01),
         ) {
-            Text(text = "", color = White)
+            Text(text = "Modifier", color = White)
         }
     }
 }
