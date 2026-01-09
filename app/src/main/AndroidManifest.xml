@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Compose"
         tools:targetApi="31">
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Compose">
             <intent-filter>
@@ -22,14 +22,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="com.example.compose.ui.ListActivity" />
-        <activity android:name="com.example.compose.ui.TextActivity" />
-        <activity android:name="com.example.compose.ui.ButtonsActivity" />
-        <activity
-            android:name="com.example.compose.ui.StateActivity"
-            android:exported="true">
-
         </activity>
     </application>
 

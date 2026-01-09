@@ -1,4 +1,4 @@
-package com.example.compose.ui.main
+package com.example.compose.data
 
 /**
  * Desc:

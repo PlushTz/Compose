@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.PagerDefaults
@@ -28,15 +32,14 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import coil3.compose.AsyncImage
-import com.example.compose.ui.main.Images
-import com.example.compose.ui.theme.Blue01
-import com.example.compose.ui.theme.Pink80
+import com.example.compose.data.Images
+import com.example.compose.theme.Blue01
+import com.example.compose.theme.Pink80
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 
@@ -46,9 +49,8 @@ import kotlin.math.absoluteValue
  * Created on 2025/11/23
  * Email:tao351992257@163.com
  */
-@Preview
 @Composable
-fun HorizontalPage() {
+fun HorizontalPage(modifier: Modifier) {
     val pageCount = Images.images.size
     val pagerState = rememberPagerState(pageCount = { pageCount })
     val coroutineScope = rememberCoroutineScope()
@@ -64,12 +66,11 @@ fun HorizontalPage() {
         state = pagerState,
         pagerSnapDistance = PagerSnapDistance.atMost(10)
     )
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = modifier.wrapContentSize()) {
         HorizontalPager(
             modifier = Modifier
                 .weight(1f)
-                .fillMaxWidth()
-                .background(color = Color.White),
+                .wrapContentSize(),
             state = pagerState,
             pageSize = PageSize.Fill,
             contentPadding = PaddingValues(horizontal = 48.dp),
@@ -78,7 +79,7 @@ fun HorizontalPage() {
         ) { page ->
             Card(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .wrapContentSize()
 //                    .padding(horizontal = 16.dp)
                     .graphicsLayer {
                         val pageOffset =
@@ -108,14 +109,15 @@ fun HorizontalPage() {
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .wrapContentWidth()
+                        .height(450.dp)
                         .background(color = Pink80)
                 ) {
                     AsyncImage(
                         model = Images.images[page],
                         contentDescription = null,
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
                     Text(
