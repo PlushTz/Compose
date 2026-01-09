@@ -10,4 +10,5 @@ object AppRoute {
     const val ROUTE_HOME_PAGE = "home_page"
     const val ROUTE_HORIZONTAL_PAGE = "horizontal_page"
     const val ROUTE_VERTICAL_PAGE = "vertical_page"
+    const val ROUTE_LAZY_COLUMN = "lazy_column"
 }
