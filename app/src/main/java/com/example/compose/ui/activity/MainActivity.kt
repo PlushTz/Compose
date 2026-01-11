@@ -19,8 +19,8 @@ import com.example.compose.router.AppRoute
 import com.example.compose.theme.ComposeTheme
 import com.example.compose.ui.home.ColumnsLayout
 import com.example.compose.ui.horizontalpager.HorizontalPage
-import com.example.compose.ui.lazycolumn.LazyColumList
-import com.example.compose.ui.lazycolumn.LazyVerticalGirdList
+import com.example.compose.ui.list_and_grids.LazyColumList
+import com.example.compose.ui.list_and_grids.LazyVerticalGirdList
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
             )
         )
         setContent {
-            ComposeTheme {
+            ComposeTheme(dynamicColor = false) {
                 AppContent()
             }
         }
