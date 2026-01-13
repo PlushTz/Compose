@@ -5,8 +5,9 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
         google()
         mavenCentral()
@@ -14,6 +15,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Compose"
-include ':app'
-include ':bloom'
-include ':wechat'
+include(":app")
+include(":bloom")
+include(":wechat")
