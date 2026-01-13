@@ -51,7 +51,7 @@ fun LazyColumList(navController: NavController, modifier: Modifier) {
         }.groupBy { it.name.first().toString() }.toSortedMap()
     }
     LazyColumn(
-        modifier = modifier
+        modifier = modifier.background(color = MaterialTheme.colorScheme.background)
     ) {
 
         contactGrouped.forEach { (initial, contacts) ->
@@ -87,7 +87,8 @@ fun ContactItem(contact: Contact) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = 10.dp),
+            .padding(all = 10.dp)
+            .background(color = MaterialTheme.colorScheme.background),
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(

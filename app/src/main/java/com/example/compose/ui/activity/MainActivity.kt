@@ -8,16 +8,20 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fitInside
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.RectRulers
 import androidx.compose.ui.layout.WindowInsetsRulers
+import androidx.compose.ui.layout.innermostOf
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -44,9 +48,9 @@ class MainActivity : ComponentActivity() {
 //            )
         )
         setContent {
-            ComposeTheme {
+            ComposeTheme(dynamicColor = false) {
                 AppContent()
-                StatusBarProtection()
+//                StatusBarProtection()
             }
         }
     }
@@ -56,32 +60,32 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppContent() {
     val navController = rememberNavController()
-    Box(
+    Scaffold(
         modifier = Modifier
-            .fitInside(WindowInsetsRulers.SafeDrawing.current)
-//            .background(color = MaterialTheme.colorScheme.primary)
-    ) {
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.primary)
+    ) { innerPadding ->
         NavHost(navController, AppRoute.ROUTE_HOME_PAGE) {
             composable(AppRoute.ROUTE_HORIZONTAL_PAGE) {
-                HorizontalPage(modifier = Modifier)
+                HorizontalPage(modifier = Modifier.consumeWindowInsets(innerPadding))
             }
 
             composable(AppRoute.ROUTE_HOME_PAGE) {
                 ColumnsLayout(
-                    modifier = Modifier,
+                    modifier = Modifier.consumeWindowInsets(innerPadding),
                     navController = navController
                 )
             }
             composable(route = AppRoute.ROUTE_LAZY_COLUMN) {
                 LazyColumList(
                     navController = navController,
-                    modifier = Modifier
+                    modifier = Modifier.consumeWindowInsets(innerPadding)
                 )
             }
             composable(route = AppRoute.ROUTE_LAZY_VERTICAL_GRID) {
                 LazyVerticalGirdList(
                     navController = navController,
-                    modifier = Modifier
+                    modifier = Modifier.consumeWindowInsets(innerPadding)
                 )
             }
         }
