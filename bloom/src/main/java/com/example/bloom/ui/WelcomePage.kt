@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -43,11 +44,11 @@ import com.example.bloom.ui.theme.white
  * Email: lijt@eetrust.com
  */
 @Composable
-fun WelcomePage(navController: NavController) {
+fun WelcomePage(modifier: Modifier, navController: NavController) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
-            .background(pink100)
+            .background(MaterialTheme.colorScheme.primary)
     ) {
         Image(
             painter = rememberVectorPainter(image = ImageVector.vectorResource(id = R.drawable.ic_light_welcome_bg)),
@@ -127,7 +128,7 @@ fun WelcomeButtons(navController: NavController) {
         }
         Spacer(modifier = Modifier.height(24.dp))
         TextButton(onClick = {
-            navController.navigate("login"){
+            navController.navigate("login") {
 
             }
         }) {

@@ -40,11 +40,11 @@ import com.example.bloom.ui.theme.white
  * Email: lijt@eetrust.com
  */
 @Composable
-fun LoginPage(navController: NavController) {
+fun LoginPage(modifier: Modifier, navController: NavController) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
-            .background(color = white)
+            .background(androidx.compose.material3.MaterialTheme.colorScheme.background)
     ) {
         LoginTitle()
         LoginInputBox()

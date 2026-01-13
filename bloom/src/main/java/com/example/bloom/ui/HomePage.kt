@@ -32,6 +32,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -88,11 +89,10 @@ val navList = listOf(
     ImageItem("Cart", R.drawable.ic_shopping_cart)
 )
 
-@Preview(showBackground = true)
 @Composable
-fun HomePage() {
+fun HomePage(modifier: Modifier) {
     Scaffold(
-        modifier = Modifier.wrapContentSize(),
+        modifier = modifier.wrapContentSize(),
         bottomBar = {
             BottomBar()
         },
@@ -100,7 +100,7 @@ fun HomePage() {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(white)
+                    .background(MaterialTheme.colorScheme.background)
                     .padding(horizontal = 16.dp)
                     .padding(it)
             ) {
@@ -120,7 +120,7 @@ fun BottomBar() {
         elevation = 16.dp, modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .background(pink100),
+            .background(MaterialTheme.colorScheme.primary),
         backgroundColor = Pink80
     ) {
         navList.forEach {
