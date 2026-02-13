@@ -86,5 +86,18 @@ fun ColumnsLayout(modifier: Modifier, navController: NavController) {
         ) {
             Text(text = "LazyVerticalGrid", color = White)
         }
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 10.dp, end = 10.dp),
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Blue01),
+            onClick = {
+                navController.navigate(AppRoute.ROUTE_CUSTOM_COMPONENT)
+            }
+        ) {
+            Text(text = "自定义组件", color = White)
+        }
     }
 }

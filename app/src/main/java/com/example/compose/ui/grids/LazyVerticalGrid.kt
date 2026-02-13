@@ -1,4 +1,4 @@
-package com.example.compose.ui.list_and_grids
+package com.example.compose.ui.grids
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth

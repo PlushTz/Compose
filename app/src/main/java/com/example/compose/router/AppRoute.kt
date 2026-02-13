@@ -12,4 +12,5 @@ object AppRoute {
     const val ROUTE_VERTICAL_PAGE = "vertical_page"
     const val ROUTE_LAZY_COLUMN = "lazy_column"
     const val ROUTE_LAZY_VERTICAL_GRID = "lazy_vertical_grid"
+    const val ROUTE_CUSTOM_COMPONENT = "custom_component"
 }
