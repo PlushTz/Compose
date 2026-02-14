@@ -26,6 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.compose.router.AppRoute
 import com.example.compose.theme.ComposeTheme
 import com.example.compose.ui.custom.CustomComponent
+import com.example.compose.ui.custom.CustomComponent2
 import com.example.compose.ui.home.ColumnsLayout
 import com.example.compose.ui.horizontalpager.HorizontalPage
 import com.example.compose.ui.lists.LazyColumList
@@ -77,7 +78,8 @@ fun AppContent() {
             }
 
             composable(route = AppRoute.ROUTE_CUSTOM_COMPONENT) {
-                CustomComponent(modifier = Modifier.padding(innerPadding))
+//                CustomComponent(modifier = Modifier.padding(innerPadding))
+                CustomComponent2(modifier = Modifier.padding(innerPadding))
             }
         }
     }
