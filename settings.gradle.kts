@@ -18,3 +18,4 @@ rootProject.name = "Compose"
 include(":app")
 include(":bloom")
 include(":wechat")
+include(":soothe")
