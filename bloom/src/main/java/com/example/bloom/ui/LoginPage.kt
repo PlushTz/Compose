@@ -40,7 +40,7 @@ import com.example.bloom.ui.theme.white
  * Email: lijt@eetrust.com
  */
 @Composable
-fun LoginPage(modifier: Modifier, navController: NavController) {
+fun LoginPage(modifier: Modifier = Modifier, navController: NavController) {
     Column(
         modifier = modifier
             .fillMaxSize()

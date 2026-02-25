@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.bloom.R
 import com.example.bloom.ui.theme.Pink40
+import com.example.bloom.ui.theme.black
 import com.example.bloom.ui.theme.button
 import com.example.bloom.ui.theme.gray
 import com.example.bloom.ui.theme.medium
@@ -36,6 +37,8 @@ import com.example.bloom.ui.theme.pink100
 import com.example.bloom.ui.theme.pink900
 import com.example.bloom.ui.theme.subtitle1
 import com.example.bloom.ui.theme.white
+import com.example.bloom.ui.uiutils.NavigationBarProtection
+import com.example.bloom.ui.uiutils.StatusBarProtection
 
 /**
  * Desc:
@@ -44,11 +47,11 @@ import com.example.bloom.ui.theme.white
  * Email: lijt@eetrust.com
  */
 @Composable
-fun WelcomePage(modifier: Modifier, navController: NavController) {
+fun WelcomePage(modifier: Modifier = Modifier, navController: NavController) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary)
+            .background(color = black)
     ) {
         Image(
             painter = rememberVectorPainter(image = ImageVector.vectorResource(id = R.drawable.ic_light_welcome_bg)),
@@ -56,6 +59,8 @@ fun WelcomePage(modifier: Modifier, navController: NavController) {
             modifier = Modifier.fillMaxSize()
         )
         WelcomeContent(navController)
+        StatusBarProtection(color = white,isTransparent = false)
+        NavigationBarProtection(isTransparent = false)
     }
 }
 

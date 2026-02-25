@@ -1,11 +1,14 @@
 package com.example.bloom
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
@@ -24,15 +27,31 @@ import com.example.bloom.ui.HomePage
 import com.example.bloom.ui.LoginPage
 import com.example.bloom.ui.WelcomePage
 import com.example.bloom.ui.theme.ComposeTheme
+import com.example.bloom.ui.uiutils.NavigationBarProtection
+import com.example.bloom.ui.uiutils.StatusBarProtection
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // 1. 开启 Edge-to-Edge，配置状态栏和导航栏样式
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.auto(
+                android.graphics.Color.TRANSPARENT,
+                android.graphics.Color.TRANSPARENT
+            ),
+            navigationBarStyle = SystemBarStyle.auto(
+                android.graphics.Color.TRANSPARENT,
+                android.graphics.Color.TRANSPARENT
+            )
+        )
+
+        // 2. 禁用 Android 10+ 导航栏的强制对比度遮罩，实现真正的沉浸
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isNavigationBarContrastEnforced = false
+        }
         setContent {
-            ComposeTheme {
+            ComposeTheme(dynamicColor = false) {
                 Content()
-                StatusBarProtection()
             }
         }
     }
@@ -42,15 +61,21 @@ class MainActivity : ComponentActivity() {
 fun Content() {
     val navController = rememberNavController()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        NavHost(navController = navController, startDestination = "welcome") {
+        NavHost(
+            navController = navController,
+            startDestination = "welcome",
+            modifier = Modifier
+                .fillMaxSize()
+                .consumeWindowInsets(innerPadding)
+        ) {
             composable("welcome") {
-                WelcomePage(modifier = Modifier.padding(innerPadding), navController)
+                WelcomePage(navController = navController)
             }
             composable("login") {
-                LoginPage(modifier = Modifier.padding(innerPadding), navController)
+                LoginPage(navController = navController)
             }
             composable("home") {
-                HomePage(modifier = Modifier.padding(innerPadding))
+                HomePage()
             }
         }
     }

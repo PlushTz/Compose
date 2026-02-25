@@ -90,7 +90,7 @@ val navList = listOf(
 )
 
 @Composable
-fun HomePage(modifier: Modifier) {
+fun HomePage(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier.wrapContentSize(),
         bottomBar = {

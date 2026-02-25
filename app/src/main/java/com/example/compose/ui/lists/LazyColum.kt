@@ -34,7 +34,7 @@ data class Contact(val name: String, val avatar: String)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun LazyColumList(navController: NavController, modifier: Modifier) {
+fun LazyColumList(navController: NavController, modifier: Modifier = Modifier) {
     val contactGrouped = remember {
         val names = listOf(
             "Alice", "Aria", "Bob", "Bella", "Charlie", "Cathy",

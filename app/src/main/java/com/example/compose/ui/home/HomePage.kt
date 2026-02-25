@@ -23,7 +23,7 @@ import com.example.compose.theme.White
  * Email: lijt@eetrust.com
  */
 @Composable
-fun ColumnsLayout(modifier: Modifier, navController: NavController) {
+fun ColumnsLayout(modifier: Modifier = Modifier, navController: NavController) {
     Column(
         modifier = modifier
             .fillMaxSize()

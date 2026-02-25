@@ -47,7 +47,7 @@ import kotlin.math.absoluteValue
  * Email:tao351992257@163.com
  */
 @Composable
-fun HorizontalPage(modifier: Modifier) {
+fun HorizontalPage(modifier: Modifier = Modifier) {
     val pageCount = Images.images.size
     val pagerState = rememberPagerState(pageCount = { pageCount })
     val coroutineScope = rememberCoroutineScope()

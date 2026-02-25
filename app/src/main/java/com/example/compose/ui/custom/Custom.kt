@@ -97,7 +97,7 @@ fun CustomComponent2(modifier: Modifier) {
 }
 
 @Composable
-fun CustomComponent3(modifier: Modifier) {
+fun CustomComponent3(modifier: Modifier = Modifier) {
     MyBasicColum(modifier) {
         Text("MyBasicColumn", color = White)
         Text("places items", color = White)

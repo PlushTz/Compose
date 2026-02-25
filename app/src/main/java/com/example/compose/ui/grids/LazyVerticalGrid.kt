@@ -22,7 +22,7 @@ import com.example.compose.data.Images
  * Email: lijt@eetrust.com
  */
 @Composable
-fun LazyVerticalGirdList(navController: NavController, modifier: Modifier) {
+fun LazyVerticalGirdList(navController: NavController, modifier: Modifier = Modifier) {
     val images = remember { Images.images }
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(2),
