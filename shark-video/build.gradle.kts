@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.wechat"
+    namespace = "com.plush.shark.video"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.wechat"
+        applicationId = "com.plush.shark.video"
         minSdk = 23
         targetSdk = 36
         versionCode = 1
@@ -19,7 +19,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -31,14 +31,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-
     buildFeatures {
         compose = true
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
@@ -51,8 +45,17 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.core)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.common)
+
+    // Coil 3
     implementation(libs.io.coil.kt.coil3.compose)
+    implementation(libs.io.coil.kt.coil3.video)
     implementation(libs.io.coil.kt.coil3.network.okhttp)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
