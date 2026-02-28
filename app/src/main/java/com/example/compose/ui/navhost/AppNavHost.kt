@@ -39,18 +39,25 @@ fun AppNavHost(paddingValues: PaddingValues) {
         }
 
         composable(AppRoute.ROUTE_HOME_PAGE) {
-            ColumnsLayout(navController = navController, modifier = Modifier.padding(paddingValues))
+            ColumnsLayout(
+                navController = navController,
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .consumeWindowInsets(paddingValues)
+            )
         }
         composable(route = AppRoute.ROUTE_LAZY_COLUMN) {
             LazyColumList(
                 navController = navController,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier,
+                paddingValues = paddingValues
             )
         }
         composable(route = AppRoute.ROUTE_LAZY_VERTICAL_GRID) {
             LazyVerticalGirdList(
                 navController = navController,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier,
+                paddingValues = paddingValues
             )
         }
 

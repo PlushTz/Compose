@@ -75,7 +75,7 @@ fun Content() {
                 LoginPage(navController = navController)
             }
             composable("home") {
-                HomePage()
+                HomePage(modifier = Modifier, innerPadding)
             }
         }
     }

@@ -1,6 +1,8 @@
 package com.example.compose.ui.grids
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -22,13 +24,20 @@ import com.example.compose.data.Images
  * Email: lijt@eetrust.com
  */
 @Composable
-fun LazyVerticalGirdList(navController: NavController, modifier: Modifier = Modifier) {
+fun LazyVerticalGirdList(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues
+) {
     val images = remember { Images.images }
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(2),
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         verticalItemSpacing = 4.dp,
-        modifier = modifier.padding(start = 5.dp, end = 5.dp)
+        modifier = modifier
+            .padding(start = 5.dp, end = 5.dp)
+            .consumeWindowInsets(paddingValues),
+        contentPadding = paddingValues
     ) {
         items(images.size) { index ->
             AsyncImage(

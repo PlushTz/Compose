@@ -2,8 +2,10 @@ package com.example.compose.ui.lists
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -34,7 +36,11 @@ data class Contact(val name: String, val avatar: String)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun LazyColumList(navController: NavController, modifier: Modifier = Modifier) {
+fun LazyColumList(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues
+) {
     val contactGrouped = remember {
         val names = listOf(
             "Alice", "Aria", "Bob", "Bella", "Charlie", "Cathy",
@@ -46,7 +52,10 @@ fun LazyColumList(navController: NavController, modifier: Modifier = Modifier) {
         }.groupBy { it.name.first().toString() }.toSortedMap()
     }
     LazyColumn(
-        modifier = modifier.background(color = MaterialTheme.colorScheme.background)
+        modifier = modifier
+            .background(color = MaterialTheme.colorScheme.background)
+            .consumeWindowInsets(paddingValues),
+        contentPadding = paddingValues
     ) {
 
         contactGrouped.forEach { (initial, contacts) ->

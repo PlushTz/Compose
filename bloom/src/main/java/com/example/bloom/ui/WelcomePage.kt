@@ -27,13 +27,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.bloom.R
 import com.example.bloom.ui.theme.Pink40
 import com.example.bloom.ui.theme.black
 import com.example.bloom.ui.theme.button
 import com.example.bloom.ui.theme.gray
 import com.example.bloom.ui.theme.medium
-import com.example.bloom.ui.theme.pink100
 import com.example.bloom.ui.theme.pink900
 import com.example.bloom.ui.theme.subtitle1
 import com.example.bloom.ui.theme.white
@@ -46,12 +46,18 @@ import com.example.bloom.ui.uiutils.StatusBarProtection
  * Created on 2024/2/4
  * Email: lijt@eetrust.com
  */
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun WelcomeContentPreview() {
+    WelcomePage(navController = rememberNavController())
+}
+
 @Composable
 fun WelcomePage(modifier: Modifier = Modifier, navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = black)
     ) {
         Image(
             painter = rememberVectorPainter(image = ImageVector.vectorResource(id = R.drawable.ic_light_welcome_bg)),
@@ -59,14 +65,18 @@ fun WelcomePage(modifier: Modifier = Modifier, navController: NavController) {
             modifier = Modifier.fillMaxSize()
         )
         WelcomeContent(navController)
-        StatusBarProtection(color = white,isTransparent = false)
+        StatusBarProtection(color = white, isTransparent = false)
         NavigationBarProtection(isTransparent = false)
     }
 }
 
 @Composable
 fun WelcomeContent(navController: NavController) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.background)
+    ) {
         Spacer(modifier = Modifier.height(72.dp))
         LeafImage()
         Spacer(modifier = Modifier.height(48.dp))
@@ -76,7 +86,6 @@ fun WelcomeContent(navController: NavController) {
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun LeafImage() {
     Image(
@@ -88,7 +97,6 @@ fun LeafImage() {
     )
 }
 
-@Preview(showBackground = true)
 @Composable
 fun WelcomeTitle() {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {

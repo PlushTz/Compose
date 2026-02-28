@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,6 +30,7 @@ import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -38,13 +40,13 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.bloom.R
 import com.example.bloom.ui.theme.Pink80
@@ -53,7 +55,6 @@ import com.example.bloom.ui.theme.caption
 import com.example.bloom.ui.theme.gray
 import com.example.bloom.ui.theme.h1
 import com.example.bloom.ui.theme.h2
-import com.example.bloom.ui.theme.pink100
 import com.example.bloom.ui.theme.white
 
 /**
@@ -64,7 +65,11 @@ import com.example.bloom.ui.theme.white
  */
 
 
-data class ImageItem(val name: String, val resId: Int, var enable: MutableState<Boolean> = mutableStateOf(false))
+data class ImageItem(
+    val name: String,
+    val resId: Int,
+    var enable: MutableState<Boolean> = mutableStateOf(false)
+)
 
 val bloomBannerList = listOf(
     ImageItem("Desert chic", R.drawable.desert_chic),
@@ -89,22 +94,33 @@ val navList = listOf(
     ImageItem("Cart", R.drawable.ic_shopping_cart)
 )
 
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun HomePage(modifier: Modifier = Modifier) {
+fun HomePagePreview() {
+    Scaffold {
+        HomePage(modifier = Modifier, it)
+    }
+}
+
+@Composable
+fun HomePage(modifier: Modifier = Modifier, paddingValues: PaddingValues) {
     Scaffold(
-        modifier = modifier.wrapContentSize(),
+        modifier = modifier
+            .fillMaxWidth()
+            .consumeWindowInsets(paddingValues),
         bottomBar = {
-            BottomBar()
+            BottomBar(paddingValues.calculateBottomPadding())
         },
-        content = {
+        content = { innerPadding ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
                     .padding(horizontal = 16.dp)
-                    .padding(it)
+                    .padding(top = paddingValues.calculateTopPadding())
+                    .padding(bottom = innerPadding.calculateBottomPadding())
             ) {
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(16.dp))
                 SearchBar()
                 BloomRowBanner()
                 BloomInfoList()
@@ -113,31 +129,32 @@ fun HomePage(modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
 @Composable
-fun BottomBar() {
-    BottomNavigation(
-        elevation = 16.dp, modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp)
-            .background(MaterialTheme.colorScheme.primary),
-        backgroundColor = Pink80
-    ) {
-        navList.forEach {
-            BottomNavigationItem(onClick = { }, icon = {
-                Icon(
-                    painter = painterResource(id = it.resId),
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp),
-                )
-            }, label = {
-                Text(text = it.name, style = caption, color = gray)
-            }, selected = ("Home" == it.name))
+fun BottomBar(navBarPadding: Dp) {
+    Surface(color = Pink80, elevation = 8.dp) {
+        Column {
+            BottomNavigation(
+                elevation = 0.dp,
+                modifier = Modifier.fillMaxWidth(),
+                backgroundColor = Pink80
+            ) {
+                navList.forEach {
+                    BottomNavigationItem(onClick = { }, icon = {
+                        Icon(
+                            painter = painterResource(id = it.resId),
+                            contentDescription = null,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    }, label = {
+                        Text(text = it.name, style = caption, color = gray)
+                    }, selected = ("Home" == it.name))
+                }
+                Spacer(Modifier.height(navBarPadding))
+            }
         }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun SearchBar() {
     Box {
@@ -146,7 +163,7 @@ fun SearchBar() {
                 .fillMaxWidth()
                 .height(56.dp)
                 .clip(RoundedCornerShape(4.dp))
-                .border(BorderStroke(1.dp, Color.Black)),
+                .border(BorderStroke(1.dp, color = MaterialTheme.colorScheme.primary)),
             leadingIcon = {
                 Icon(
                     painter = rememberVectorPainter(image = ImageVector.vectorResource(id = R.drawable.ic_search)),
@@ -158,15 +175,14 @@ fun SearchBar() {
                 Text(text = "Search", style = body1, color = gray)
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                backgroundColor = white,
-                unfocusedBorderColor = white,
-                focusedBorderColor = white
+                backgroundColor = MaterialTheme.colorScheme.surface,
+                unfocusedBorderColor = MaterialTheme.colorScheme.background,
+                focusedBorderColor = MaterialTheme.colorScheme.surfaceContainer
             )
         )
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun BloomRowBanner() {
     Column {
@@ -230,7 +246,6 @@ fun PlantCard(plant: ImageItem) {
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun BloomInfoList() {
     Column {
@@ -256,7 +271,7 @@ fun BloomInfoList() {
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth(),
-            contentPadding = PaddingValues(bottom = 56.dp)
+            contentPadding = PaddingValues(bottom = 16.dp)
         ) {
             items(bloomInfoList.size) {
                 if (it != 0) {
