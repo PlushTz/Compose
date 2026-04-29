@@ -1,26 +1,29 @@
 [versions]
-agp = "8.13.2"
-kotlin = "2.3.0"
-coreKtx = "1.17.0"
-lifecycleRuntimeKtx = "2.10.0"
-activityCompose = "1.12.2"
-composeBom = "2025.12.01"
-composeUi = "1.10.0"
-composeUiGraphics = "1.10.0"
-composeUiTooling = "1.10.0"
-composeUiToolingPreview = "1.10.0"
-composeUiTestJunit4 = "1.10.0"
-composeUiTestManifest = "1.10.0"
-composeMaterial = "1.10.0"
-composeMaterial3 = "1.4.0"
-navigationCompose = "2.9.6"
-runtimeLivedata = "1.10.0"
+agp = "8.7.3"
+kotlin = "2.1.0"
+coreKtx = "1.15.0"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.9.3"
+composeBom = "2024.11.00"
+composeUi = "1.7.5"
+composeUiGraphics = "1.7.5"
+composeUiTooling = "1.7.5"
+composeUiToolingPreview = "1.7.5"
+composeUiTestJunit4 = "1.7.5"
+composeUiTestManifest = "1.7.5"
+composeMaterial = "1.7.5"
+composeMaterial3 = "1.3.1"
+navigationCompose = "2.8.4"
+runtimeLivedata = "1.7.5"
 junit = "4.13.2"
-junitExt = "1.3.0"
-espressoCore = "3.7.0"
-coil3Compose = "3.3.0"
-material3WindowSizeClass = "1.4.0"
-media3 = "1.5.1"
+junitExt = "1.2.1"
+espressoCore = "3.6.1"
+coil3Compose = "3.0.0-rc01"
+material3WindowSizeClass = "1.3.1"
+media3 = "1.4.1"
+hilt = "2.52"
+hiltNavigationCompose = "1.2.0"
+ksp = "2.1.0-1.0.29"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +41,7 @@ androidx-compose-material = { group = "androidx.compose.material", name = "mater
 androidx-compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core"}
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -49,9 +53,14 @@ androidx-compose-material3-window-size-class1 = { group = "androidx.compose.mate
 androidx-media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
 androidx-media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
 androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

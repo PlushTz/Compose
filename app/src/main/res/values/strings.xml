@@ -1,8 +1,20 @@
 <resources>
-    <string name="app_name">Compose</string>
+    <string name="app_name">Tool Box</string>
     <string name="btn_text">Text</string>
     <string name="btn_buttons">Button</string>
     <string name="agree">同意</string>
     <string name="reject">拒绝</string>
     <string name="search_description">你好世界,Hello World</string>
+    <string name="douyin_title">抖音视频下载</string>
+    <string name="video_link_label">视频链接</string>
+    <string name="start_download_btn">开始下载</string>
+    <string name="saving_to_album">正在保存到相册…</string>
+    <string name="parsing_video">正在解析视频…</string>
+    <string name="download_success">下载完成</string>
+    <string name="instructions_title">使用说明</string>
+    <string name="instruction_step_1">1. 在抖音APP中，点击视频分享按钮，选择\"复制链接\"</string>
+    <string name="instruction_step_2">2. 回到本页面，点击\"粘贴链接\"按钮</string>
+    <string name="instruction_step_3">3. 点击\"开始下载\"即可下载无水印视频</string>
+    <string name="go_to_douyin">前往抖音</string>
+    <string name="video_link_placeholder">复制链接到这里</string>
 </resources>

@@ -137,4 +137,4 @@ fun Modifier.firstBaselineToTop(firstBaselineToTop: Dp) =
         }
     }
 
-fun Modifier.clip(shape: Shape) = graphicsLayer(shape = shape, clip = true)
+fun Modifier.customClip(shape: Shape) = graphicsLayer(shape = shape, clip = true)

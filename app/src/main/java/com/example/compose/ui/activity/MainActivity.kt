@@ -16,7 +16,9 @@ import com.example.compose.theme.ComposeTheme
 import com.example.compose.ui.navhost.AppNavHost
 import com.example.compose.ui.uiutils.NavigationBarProtection
 import com.example.compose.ui.uiutils.StatusBarProtection
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,4 +66,3 @@ fun AppContent() {
         }
     }
 }
-
