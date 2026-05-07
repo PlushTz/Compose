@@ -51,6 +51,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -58,6 +59,7 @@ import androidx.navigation.NavController
 import com.example.compose.R
 import com.example.compose.data.DouyinUiState
 import com.example.compose.data.DownloadStatus
+import com.example.compose.theme.ComposeTheme
 
 @Composable
 fun DouyinExtractorPage(
@@ -126,10 +128,10 @@ fun DouyinExtractorContent(
                     .fillMaxWidth()
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = if (uiState.url.isNotEmpty()) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
-                    contentColor = if (uiState.url.isNotEmpty()) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.primary,
-                    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
-                    disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+//                    containerColor = if (uiState.url.isNotEmpty()) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.surfaceVariant,
+//                    contentColor = if (uiState.url.isNotEmpty()) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary,
+//                    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+//                    disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
                 ),
                 shape = RoundedCornerShape(12.dp)
             ) {
@@ -387,5 +389,42 @@ fun DouyinBottomBar(modifier: Modifier = Modifier) {
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DouyinExtractorPreview() {
+    ComposeTheme {
+        DouyinExtractorContent(
+            uiState = DouyinUiState(
+                url = "https://v.douyin.com/xxxxxx/",
+                status = DownloadStatus.IDLE
+            ),
+            paddingValues = PaddingValues(0.dp),
+            onUrlChange = {},
+            onDownloadClick = {},
+            onClear = {},
+            onBack = {}
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Downloading State")
+@Composable
+fun DouyinDownloadingPreview() {
+    ComposeTheme {
+        DouyinExtractorContent(
+            uiState = DouyinUiState(
+                url = "https://v.douyin.com/xxxxxx/",
+                status = DownloadStatus.DOWNLOADING,
+                progress = 0.65f
+            ),
+            paddingValues = PaddingValues(0.dp),
+            onUrlChange = {},
+            onDownloadClick = {},
+            onClear = {},
+            onBack = {}
+        )
     }
 }

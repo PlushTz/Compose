@@ -1,7 +1,16 @@
 package com.example.compose.ui.navhost
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.animation.core.EaseIn
+import androidx.compose.animation.core.EaseOut
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,7 +43,12 @@ fun AppNavHost(paddingValues: PaddingValues) {
             startDestination = AppRoute.ROUTE_HOME_PAGE,
             modifier = Modifier
                 .fillMaxSize()
-                .consumeWindowInsets(paddingValues)
+                .consumeWindowInsets(paddingValues),
+            enterTransition = {
+                EnterTransition.None
+            }, exitTransition = {
+                ExitTransition.None
+            }
         ) {
             composable(AppRoute.ROUTE_HORIZONTAL_PAGE) {
                 HorizontalPage(
@@ -70,7 +84,31 @@ fun AppNavHost(paddingValues: PaddingValues) {
                 )
             }
 
-            composable(route = AppRoute.ROUTE_DOUYIN_VIDEO) {
+            composable(
+                route = AppRoute.ROUTE_DOUYIN_VIDEO,
+                enterTransition = {
+                    fadeIn(
+                        animationSpec = tween(
+                            durationMillis = 300,
+                            easing = LinearEasing
+                        )
+                    ) + slideIntoContainer(
+                        animationSpec = tween(
+                            durationMillis = 300,
+                            easing = EaseIn
+                        ), towards = AnimatedContentTransitionScope.SlideDirection.Start
+                    )
+                }, exitTransition = {
+                    fadeOut(
+                        animationSpec = tween(
+                            durationMillis = 300,
+                            easing = LinearEasing
+                        )
+                    ) + slideOutOfContainer(
+                        animationSpec = tween(300, easing = EaseOut),
+                        towards = AnimatedContentTransitionScope.SlideDirection.End
+                    )
+                }) {
                 DouyinExtractorPage(
                     navController = navController,
                     paddingValues = paddingValues,
