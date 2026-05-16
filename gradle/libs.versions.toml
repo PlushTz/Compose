@@ -28,6 +28,12 @@ hiltNavigationCompose = "1.2.0"
 ksp = "2.1.0-1.0.29"
 jetbrainsKotlinJvm = "2.1.0"
 junitVersion = "4.12"
+appcompat = "1.7.1"
+material = "1.12.0"
+activity = "1.9.3"
+constraintlayout = "2.2.1"
+ktor = "2.3.8"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -63,6 +69,15 @@ androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navig
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "compose" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 junit-junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
