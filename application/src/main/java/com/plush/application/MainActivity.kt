@@ -1,6 +1,7 @@
 package com.plush.application
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.plush.application.ktor.KtorFactory
+import com.plush.application.ktor.log
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +27,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         lifecycleScope.launch {
-            val response = KtorFactory.requestKtor()
-            findViewById<TextView>(R.id.textView).text = "${response.status}"
+//            val response = KtorFactory.requestKtor()
+//            findViewById<TextView>(R.id.textView).text = "${response.status}"
+
+            KtorFactory.flowKtor().collect { response ->
+                log("onCreate")
+                findViewById<TextView>(R.id.textView).text = "${response.headers}"
+            }
+
         }
     }
 }

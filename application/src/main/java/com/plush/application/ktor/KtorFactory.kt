@@ -8,6 +8,10 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.request
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpMethod
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 /**
  * Desc:
@@ -25,7 +29,7 @@ object KtorFactory {
                         Log.d("TAG", message)
                     }
                 }
-                level = LogLevel.ALL
+                level = LogLevel.INFO
             }
         }
     }
@@ -35,5 +39,13 @@ object KtorFactory {
             method = HttpMethod.Get
         }
         return response
+    }
+
+    fun flowKtor(): Flow<HttpResponse> = flow {
+        val response = httpClient.request("https://ktor.io/") {
+            method = HttpMethod.Get
+        }
+        log(::flowKtor.name)
+        emit(response)
     }
 }
