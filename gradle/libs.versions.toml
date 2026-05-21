@@ -33,6 +33,7 @@ material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.2.1"
 ktor = "2.3.8"
+uiGraphics = "1.11.1"
 
 
 [libraries]
@@ -77,6 +78,7 @@ ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "uiGraphics" }
 
 
 [plugins]
