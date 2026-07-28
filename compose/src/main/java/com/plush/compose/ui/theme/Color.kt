@@ -1,4 +1,4 @@
-package com.plush.compose.example.ui.theme
+package com.plush.compose.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

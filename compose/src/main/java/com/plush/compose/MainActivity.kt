@@ -1,4 +1,4 @@
-package com.plush.compose.example
+package com.plush.compose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -24,8 +24,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
-import com.plush.compose.example.ui.navhost.AppNavHost
-import com.plush.compose.example.ui.theme.ComposeTheme
+import com.plush.compose.ui.navhost.AppNavHost
+import com.plush.compose.ui.theme.ComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

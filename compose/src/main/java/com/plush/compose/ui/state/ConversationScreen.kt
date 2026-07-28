@@ -1,4 +1,4 @@
-package com.plush.compose.example.ui.state
+package com.plush.compose.ui.state
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyColumn

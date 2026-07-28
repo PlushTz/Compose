@@ -1,4 +1,4 @@
-package com.plush.compose.example.ui.navhost
+package com.plush.compose.ui.navhost
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,10 +7,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.plush.compose.example.router.AppRoute
-import com.plush.compose.example.ui.home.HomePage
-import com.plush.compose.example.ui.state.StatePage
-import com.plush.compose.example.ui.state.Test
+import com.plush.compose.router.AppRoute
+import com.plush.compose.ui.effect.DisposableEffectExample
+import com.plush.compose.ui.home.HomePage
+import com.plush.compose.ui.state.StatePage
+import com.plush.compose.ui.state.Test
 
 /**
  * Desc:
@@ -33,5 +34,6 @@ fun AppNavHost(paddingValues: PaddingValues) {
             route = AppRoute.ROUTE_STATE,
             content = { StatePage(paddingValues = paddingValues) })
         composable(route = AppRoute.ROUTE_CONVERSATION_SCREEN, content = { Test() })
+        composable(route = AppRoute.ROUTE_EFFECT, content = { DisposableEffectExample() })
     }
 }

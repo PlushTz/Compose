@@ -1,6 +1,5 @@
-package com.plush.compose.example.ui.theme
+package com.plush.compose.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

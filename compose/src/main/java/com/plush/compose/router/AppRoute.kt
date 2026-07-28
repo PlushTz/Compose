@@ -1,4 +1,4 @@
-package com.plush.compose.example.router
+package com.plush.compose.router
 
 /**
  * Desc:
@@ -10,4 +10,5 @@ object AppRoute {
     const val ROUTE_HOME_PAGE = "home_page"
     const val ROUTE_STATE = "state_example_page"
     const val ROUTE_CONVERSATION_SCREEN = "conversation_screen"
+    const val ROUTE_EFFECT = "effect"
 }

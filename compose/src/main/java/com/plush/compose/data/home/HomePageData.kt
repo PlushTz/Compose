@@ -1,4 +1,4 @@
-package com.plush.compose.example.data.home
+package com.plush.compose.data.home
 
 /**
  * Desc:

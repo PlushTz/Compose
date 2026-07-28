@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.plush.compose.example"
+    namespace = "com.plush.compose"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.plush.compose.example"
+        applicationId = "com.plush.compose"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.play.services.measurement.api)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)

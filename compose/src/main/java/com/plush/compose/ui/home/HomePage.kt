@@ -1,4 +1,4 @@
-package com.plush.compose.example.ui.home
+package com.plush.compose.ui.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -27,9 +27,9 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.plush.compose.example.data.home.HomePageData
-import com.plush.compose.example.data.home.HomePageDataUtils
-import com.plush.compose.example.ui.theme.ComposeTheme
+import com.plush.compose.data.home.HomePageData
+import com.plush.compose.data.home.HomePageDataUtils
+import com.plush.compose.ui.theme.ComposeTheme
 
 /**
  * Desc:

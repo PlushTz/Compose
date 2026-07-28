@@ -1,4 +1,4 @@
-package com.plush.compose.example.ui.state
+package com.plush.compose.ui.state
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
